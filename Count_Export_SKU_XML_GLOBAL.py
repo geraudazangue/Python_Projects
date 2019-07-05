@@ -11,7 +11,9 @@ from pathlib import Path
 from lxml import etree
 import pandas as pd
 from datetime import datetime
+import logging
 
+logging.basicConfig(filename='app.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 count2=0
 value = []
 
@@ -26,7 +28,7 @@ for p in  Path('C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY').glob('**/*.
             value.append(s_sku)
 
     count2 = count + count2
-
+    logging.info('%s Nb sku', count2)
 print(count2)
 
 d = {'SKU':value}
