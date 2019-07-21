@@ -39,12 +39,3 @@ try:
 
 except Exception as e:
   logging.exception("Exception occurred")
-#a= glob.glob('C:/Users/Gael/Desktop/TESTDOSSIER/*.xml')
-#a = os.listdir('C:/Users/Gael/Desktop/CODE/vba')
-#b = os.path.realpath('a')
-#p= list(Path('C:/Users/Gael/Desktop/TESTDOSSIER').glob('**/*.xml'))
-
-        #for nb in xml.xpath("/users/user/nom"):
-            #print(nb.text)
-            #value.append(nb.text)
-#export_excel = df.to_excel (r'C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY/export_dataframe.xlsx', index = None, header=True)
