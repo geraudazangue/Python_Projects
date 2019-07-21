@@ -7,9 +7,10 @@ import os
 
 df = pd.read_excel('C:/Users/Gael/Desktop/CODE/RAW FILES/test.xlsx', sheet_names='test1')
 tags= df.columns.values
+mytime = datetime.strftime(datetime.now(), '%Y%m%d_%H%M%S')
+file_path = "C:/Users/Gael/Desktop/CODE/RAW FILES/{0}".format('Converted_file_' + mytime +'.xml')
 
 Root = etree.Element("Root")
-
 head = etree.SubElement(Root, 'Head')
 title = etree.SubElement(head, 'title')
 title.text = 'CPD_EMEA'
@@ -18,9 +19,6 @@ dc.text = str(datetime.today())
 dm = etree.SubElement(head, 'dateModified')
 dm.text = str(datetime.today())
 
-time = datetime.strftime(datetime.now(), '%Y%m%d_%H%M%S')
-
-file_path = "C:/Users/Gael/Desktop/CODE/RAW FILES/{0}".format('Converted_file_' + time +'.xml')
 body = etree.SubElement(Root, 'body')
 for rowOfCellObjects in df.values:
     PRODUCT = etree.SubElement(body, 'PRODUCT')
@@ -37,10 +35,6 @@ for rowOfCellObjects in df.values:
 
 print(etree.tostring(Root, pretty_print=True))
 XML_OUTPUT = etree.tostring(Root, pretty_print=True, encoding='UTF-8', xml_declaration=True)
-#tree = ET.ElementTree(Root)
-#tree.write('C:/Users/Gael/Desktop/CODE/RAW FILES/filename.xml', pretty_print=True, xml_declaration=True)
 
 with open(file_path, "wb") as writter:
     writter.write(XML_OUTPUT)
-
-#os.rename("C:/Users/Gael/Desktop/CODE/RAW FILES/Converted_file", file_path)
