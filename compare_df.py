@@ -15,6 +15,3 @@ def highlight_diff(data, color='yellow'):
     return pd.DataFrame(np.where(data.ne(other, level=0), attr, ''), index=data.index, columns=data.columns)
 
 df_last.style.apply(highlight_diff, axis=None)
-
-#df5 = df4.dropna(how='all')
-#df5 = df4.FILLna(0)
