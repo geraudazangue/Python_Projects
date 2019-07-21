@@ -34,5 +34,9 @@
 #Group by transform to avoid groupby + merge
 #df.groupby('ID')["group_value"].transform('sum or max,..')
 
+#Removing data with different column value
 #df = df[df['S'] != df['T']]
 #df = df.query("S != T")
+
+#Use conditions to remove columns with numpy
+#np.where.
