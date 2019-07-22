@@ -1,0 +1,54 @@
+## List Docker CLI commands
+docker
+docker container --help
+
+## Display Docker version and info
+docker --version
+docker version
+docker info
+
+## Execute Docker image
+docker run hello-world
+
+## List Docker images
+docker image ls
+
+## List Docker containers (running, all, all in quiet mode)
+docker container ls
+docker container ls --all
+docker container ls -aq
+
+#Create a docker image
+docker build --tag=friendlyhello .
+docker image ls
+
+#Run the app, mapping your machine’s port 4000 to the container’s published port 80 using -p:
+docker run -p 4000:80 friendlyhello
+
+#Stop containers
+ocker container stop 1fa4ab2cf395(container_ID)
+
+#Tag an image
+docker tag image username/repository:tag
+
+#Publish image
+docker push username/repository:tag
+
+#Pull and run the image from the remote repository
+docker run -p 4000:80 username/repository:tag
+
+#Run your new load-balanced app
+docker swarm init
+docker stack deploy -c docker-compose.yml getstartedlab(app name)
+
+#Services
+docker service ls
+docker stack services getstartedlab
+docker service ps getstartedlab_web(service name)
+
+#Scale the app
+docker stack deploy -c docker-compose.yml getstartedlab
+
+#Take down the app and the swarm
+docker stack rm getstartedlab
+docker swarm leave --force
