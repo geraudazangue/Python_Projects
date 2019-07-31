@@ -40,3 +40,19 @@
 
 #Use conditions to remove columns with numpy
 #np.where.
+
+############## FOOD FOR THOUGHT ON ODBC CONNEXION#################
+# Using a DSN, but providing a password as well
+#cnxn = pyodbc.connect('DSN=test;PWD=password')
+# Create a cursor from the connection
+#cursor = cnxn.cursor()
+#cursor.execute("select user_id, user_name from users")
+#row = cursor.fetchone()
+#row = cursor.fetchall()
+
+#cursor.execute("""
+    #select user_id, user_name
+      #from users
+     #where last_logon < ?
+       #and bill_overdue = ?
+#""", [datetime.date(2001, 1, 1), 'y'])
