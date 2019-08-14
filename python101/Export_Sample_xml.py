@@ -25,17 +25,17 @@ mytime = datetime.strftime(datetime.now(), '%Y%m%d_%H%M%S')
 
 file_path = "C:/Users/Gael/Desktop/CODE/RAW FILES/{0}".format('Converted_file_' + time +'.xml')
 for p in  Path('C:/Users/Gael/Desktop/CODE/test').glob('**/*.xml'):
-context = etree.iterparse(str(p), events=('end', ))
-for event, elem in context:
+    context = etree.iterparse(str(p), events=('end', ))
+    for event, elem in context:
 #Thisnis the event launcher
-    if elem.tag == 'book':
-        if elem.find('genre').text in input_file.value:
-            body.append(elem)
-            print(XML_OUTPUT)
-    if (elem.tag == 'PRODUCT') :
+        if elem.tag == 'book':
+            if elem.find('genre').text in input_file.value:
+                body.append(elem)
+                print(XML_OUTPUT)
+        if (elem.tag == 'PRODUCT') :
             if (elem.find('Civilté').text in range):
                 body.append(elem)
-                
+
 XML_OUTPUT = etree.tostring(Root, pretty_print=True, encoding='UTF-8', xml_declaration=True)
 with open(file_path, "wb") as writter:
     writter.write(XML_OUTPUT)
