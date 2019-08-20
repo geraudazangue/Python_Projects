@@ -14,7 +14,7 @@ mytime = datetime.strftime(datetime.now(), '%Y%m%d_%H%M%S')
 file_path = "C:/Users/Gael/Desktop/CODE/RAW FILES/{0}".format('Converted_file_' + mytime +'.json')
 
 print(XML_OUTPUT)
-jsonString = json.dumps(xmltodict.parse(XML_OUTPUT))
+jsonString = json.dumps(xmltodict.parse(XML_OUTPUT),indent=4)
 
 with open(file_path, 'w') as f:
     f.write(jsonString)
