@@ -6,6 +6,8 @@ from lxml import etree
 
 #to normalise JSON to pandas dataframe
 #json_normalize(data)
+#https://www.kaggle.com/jboysen/quick-tutorial-flatten-nested-json-in-pandas
+
 xml = etree.parse('C:/Users/Gael/Desktop/CODE/python/COUNT SKU PY/testbook.xml')
 XML_OUTPUT = etree.tostring(xml, pretty_print=True, encoding='UTF-8')
 mytime = datetime.strftime(datetime.now(), '%Y%m%d_%H%M%S')
