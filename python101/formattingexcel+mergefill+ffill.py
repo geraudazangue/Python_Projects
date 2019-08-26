@@ -38,6 +38,7 @@ header_format = workbook.add_format({
 header_fmt = workbook.add_format({'font_name': 'Arial', 'font_size': 10, 'bold': True})
 red_format = workbook.add_format({'bg_color':'red'})
 
+worksheet.merge_range('B4:D4', 'Merged Range', header_format)
 # Write the column headers with the defined format.
 for col_num, value in enumerate(df.columns.values):
     worksheet.write(0, col_num, value, header_format)
