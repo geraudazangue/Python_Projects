@@ -24,6 +24,7 @@
 
 
 ##########PANDA ######"
+df = df[df['Column'.isin[list of values]]]
 #df5 = df4.dropna(how='all')
 #df5 = df4.FILLna(0)"
 
