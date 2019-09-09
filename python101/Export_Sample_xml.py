@@ -29,7 +29,7 @@ for p in  Path('C:/Users/Gael/Desktop/CODE/test').glob('**/*.xml'):
     for event, elem in context:
 #Thisnis the event launcher
         if elem.tag == 'book':
-            if elem.find('genre').text in input_file.value:
+            if elem.find('genre').text in input_file.values:
                 body.append(elem)
                 print(XML_OUTPUT)
         if (elem.tag == 'PRODUCT') :

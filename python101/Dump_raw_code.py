@@ -24,7 +24,7 @@
 
 
 ##########PANDA ######"
-df = df[df['Column'.isin[list of values]]]
+#df = df[df['A'].isin(list)]
 #df5 = df4.dropna(how='all')
 #df5 = df4.FILLna(0)"
 
@@ -57,3 +57,11 @@ df = df[df['Column'.isin[list of values]]]
      #where last_logon < ?
        #and bill_overdue = ?
 #""", [datetime.date(2001, 1, 1), 'y'])
+
+#split large Files
+for i, chunk in enumerate(pd.read_csv('Extract_vincent', chunksize=100000)):
+	chunk.to_csv('Extract_vincent{}.csv'.format(i), index='False')
+
+size = 10000
+
+list_of_df = [df.iloc[i:i + size -1,:] for i in range(0,len(df),size)]
