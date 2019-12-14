@@ -65,3 +65,11 @@ for i, chunk in enumerate(pd.read_csv('Extract_vincent', chunksize=100000)):
 size = 10000
 
 list_of_df = [df.iloc[i:i + size -1,:] for i in range(0,len(df),size)]
+
+#merge Many csv files
+from glob import iglob 
+import pandas as pd 
+
+path = r'C:\user\your\path\**\*.csv'
+
+df = pd.concat((pd.read_csv(f) for f in iglob(path, recursive=True)), ignore_index=True)
