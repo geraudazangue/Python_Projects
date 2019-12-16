@@ -7,7 +7,7 @@ with open("C:/Users/Gael/Desktop/CODE/RAW FILES/pipe dataset/result_contacts.txt
     # get No of columns in each line
     col_count = [ len(l.split("|")) for l in f.readlines() ]
 
-column_names = [i for i in range(0, max(col_count))]
+column_names = ['col' + '_' + str(i)  for i in range(0, max(col_count)-1)]
 
 ### Read csv
 df = pd.read_csv("C:/Users/Gael/Desktop/CODE/RAW FILES/pipe dataset/result_contacts.txt", header=None, delimiter="|", names=column_names, encoding = "utf-8")
