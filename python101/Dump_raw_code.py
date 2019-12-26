@@ -1,6 +1,11 @@
+############### XML MANIPULATION #################
 Write to to a file XML
 tree = ET.ElementTree(Root)
 tree.write('C:/Users/Gael/Desktop/CODE/RAW FILES/filename.xml', pretty_print=True, xml_declaration=True)
+Using xpath instead of findall
+for nb in xml.xpath("/users/user/nom"):
+    print(nb.text)
+    value.append(nb.text)
 
 Open and read a file
 f = open('C:/Users/Gael/Desktop/CODE/python/COUNT SKU PY/testbook.xml')
@@ -17,13 +22,8 @@ a = os.listdir('C:/Users/Gael/Desktop/CODE/vba')
 b = os.path.realpath('a')
 p= list(Path('C:/Users/Gael/Desktop/TESTDOSSIER').glob('**/*.xml'))
 
-Using xpath instead of findall
-for nb in xml.xpath("/users/user/nom"):
-    print(nb.text)
-    value.append(nb.text)
 
-
-##########PANDA ######"
+##########  PANDA ##################
 df = df[df['A'].isin(list)]
 df5 = df4.dropna(how='all')
 df5 = df4.FILLna(0)"
@@ -40,7 +40,29 @@ df = df[df['S'] != df['T']]
 df = df.query("S != T")
 
 Use conditions to remove columns with numpy
-np.where.
+np.where
+
+#SQL QUERY WITH INPUT FILE
+with open('file', 'r') as file:
+	list = [line.strip('\n') for line in file]
+
+list_id = ','.JOIN([id for id in list])
+sql_query = '''SELECT *
+				FROM TABLE
+				WHERE ID in ({})
+			'''.format(list_id)
+df = pd.read_sql(sql_query, cnxn, params=(*list))
+
+#SPLIT LARGE FILES
+for i, chunk in enumerate(pd.read_csv('Extract_vincent', chunksize=100000)):
+	chunk.to_csv('Extract_vincent{}.csv'.format(i), index='False')
+size = 10000
+list_of_df = [df.iloc[i:i + size -1,:] for i in range(0,len(df),size)]
+
+#MERGE MANY FILES
+from glob import iglob
+path = r'C:\user\your\path\**\*.csv'
+df = pd.concat((pd.read_csv(f) for f in iglob(path, recursive=True)), ignore_index=True)
 
 ############## FOOD FOR THOUGHT ON ODBC CONNEXION#################
  Using a DSN, but providing a password as well
@@ -57,19 +79,3 @@ cursor.execute("""
      where last_logon < ?
        and bill_overdue = ?
 """, [datetime.date(2001, 1, 1), 'y'])
-
-split large Files
-for i, chunk in enumerate(pd.read_csv('Extract_vincent', chunksize=100000)):
-	chunk.to_csv('Extract_vincent{}.csv'.format(i), index='False')
-
-size = 10000
-
-list_of_df = [df.iloc[i:i + size -1,:] for i in range(0,len(df),size)]
-
-#merge Many csv files
-from glob import iglob 
-import pandas as pd 
-
-path = r'C:\user\your\path\**\*.csv'
-
-df = pd.concat((pd.read_csv(f) for f in iglob(path, recursive=True)), ignore_index=True)
