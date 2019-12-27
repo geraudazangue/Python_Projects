@@ -12,7 +12,9 @@ from lxml import etree
 import pandas as pd
 from datetime import datetime
 import logging
+import time
 
+start_time = time.time()
 logging.basicConfig(filename='app.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 count2=0
 value = []
@@ -49,3 +51,7 @@ export_excel = df.to_excel (r"C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY
 
 except Exception as e:
   logging.exception("Exception occurred")
+
+End_time =time.time()
+Execution_time = End_time - start_time
+print(f"{Execution_time},secs")
