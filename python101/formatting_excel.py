@@ -32,5 +32,3 @@ for col_num, value in enumerate(df.columns.values):
 
 # Close the Pandas Excel writer and output the Excel file.
 writer.save()
-
-#concatenate : https://stackoverflow.com/questions/20906474/import-multiple-csv-files-into-pandas-and-concatenate-into-one-dataframe
