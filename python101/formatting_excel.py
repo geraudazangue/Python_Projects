@@ -1,16 +1,3 @@
-#concatenate files
-path = r'C:\DRO\DCL_rawdata_files'                     # use your path
-all_files = glob.glob(os.path.join(path, "*.csv"))     # advisable to use os.path.join as this makes concatenation OS independent
-
-df_from_each_file = (pd.read_csv(f) for f in all_files)
-concatenated_df   = pd.concat(df_from_each_file, ignore_index=True)
-export_excel = concatenated_df.to_excel (r'C:\Users\Gael\Desktop\export_dataframe.xlsx', index = None, header=True)
-#combined_csv.to_csv( "combined_csv.csv", index=False, encoding='utf-8-sig')
-
-#forward filling and backward filling
-df.fillna(method='ffill')
-df.bfill().ffill()
-
 import pandas as pd
 
 # Create a Pandas dataframe from some data.
