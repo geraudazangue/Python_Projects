@@ -17,6 +17,9 @@ Rename a file
 os.rename("C:/Users/Gael/Desktop/CODE/RAW FILES/Converted_file", file_path)
 
 Accessing a Dir or file
+path = r'C:\DRO\DCL_rawdata_files'                     # use your path
+all_files = glob.glob(os.path.join(path, "*.csv"))     # advisable to use os.path.join as this makes concatenation OS independent
+
 a= glob.glob('C:/Users/Gael/Desktop/TESTDOSSIER/*.xml')
 a = os.listdir('C:/Users/Gael/Desktop/CODE/vba')
 b = os.path.realpath('a')
@@ -27,6 +30,10 @@ p= list(Path('C:/Users/Gael/Desktop/TESTDOSSIER').glob('**/*.xml'))
 df = df[df['A'].isin(list)]
 df5 = df4.dropna(how='all')
 df5 = df4.FILLna(0)"
+
+#forward filling and backward filling
+df.fillna(method='ffill')
+df.bfill().ffill()
 
 delete all rows for which column 'Age' has value greater than 30 and Country is India
 indexNames = df[ (df['Age'] >= 30) & (df['Country'] == 'India') ].index
