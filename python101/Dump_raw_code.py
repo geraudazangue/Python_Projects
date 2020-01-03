@@ -53,7 +53,7 @@ np.where
 with open('file', 'r') as file:
 	list = [line.strip('\n') for line in file]
 
-list_id = ','.JOIN([id for id in list])
+list_id = ','.join(["'%s'" %id for id in list])
 sql_query = '''SELECT *
 				FROM TABLE
 				WHERE ID in ({})
