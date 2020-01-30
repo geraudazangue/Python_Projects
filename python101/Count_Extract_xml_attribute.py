@@ -32,7 +32,7 @@ try:
         count2 = count + count2
         logging.info('%s Nb sku', count2)
     print(count2)
- #######SOLUTION 2###############  
+ #######SOLUTION 2###############
 test_list = [etree.parse(str(p)) for p in Path('C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY').glob('**/*.xml')
                                  if p.is_file()]
 def find_sku(xml):
@@ -47,7 +47,7 @@ print(len(value2))
 d = {'SKU':value}
 df = pd.DataFrame(d)
 datestring = datetime.strftime(datetime.now(), ' %Y%m%d_%H%M%S')
-export_excel = df.to_excel (r"C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY/{0}".format('export_NB_SKU' + datestring + '.xlsx'), index = None, header=True)
+export_excel = df.to_excel (fr'C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY/export_NB_SKU_{datestring}.xlsx', index = None, header=True)
 
 except Exception as e:
   logging.exception("Exception occurred")

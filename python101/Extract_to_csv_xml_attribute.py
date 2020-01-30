@@ -20,11 +20,11 @@ def parser_xml(tags, path):
         if node.tag == 'A0001':
             sku = node.text
             t = 0
-            myocc = sku + '-' + str(t)
-            newmyocc = sku + '-' + str(t)
+            myocc = ''.join([sku,'-',str(t)])
+            newmyocc = ''.join([sku,'-',str(t)])
         if node.tag == Attribute_to_extract[-1]:
             t = t + 1
-            newmyocc = sku + '-' + str(t)
+            newmyocc = ''.join([sku,'-',str(t)])
         if node.tag in tags:
             yield [myocc, node.tag, node.text]
             myocc = newmyocc
@@ -37,14 +37,16 @@ for generator in list_of_generator:
 		list_of_attribute_value.append(attribute_value)
 
  #solution 2:
-list_of_attribute_value2 = list(chain.from_iterable(parser_xml(Attribute_to_extract,file) for file in Path('C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY').glob('**/*.xml')))
+list_of_attribute_value2 = list(chain.from_iterable(parser_xml(Attribute_to_extract,file)
+                                for file in Path('C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY').glob('**/*.xml')))
 #print(list_of_attribute_value2)
 df_attributes_value = pd.DataFrame(list_of_attribute_value2, columns=['myocc','Attribute','Value'])
 #print(df_attributes_value)
 #Nasty, yes I know
 df_prefinal_attribute_extract = df_attributes_value.pivot(index="myocc", columns='Attribute', values='Value')
 print(df_prefinal_attribute_extract)
-export_excel = df_prefinal_attribute_extract.to_excel (r"C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY/{0}".format('EXPORT_ELIX2SAP' + datestring + '.xlsx'), index = None, header=True)
+export_path = r'C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY/'
+export_excel = df_prefinal_attribute_extract.to_excel (f'{export_path}EXPORT_{datestring}.xlsx', index = None, header=True)
 End = time.time()
 Execution_time = End - start
 print(f'{Execution_time} secs')

@@ -8,7 +8,7 @@ import os
 df = pd.read_excel('C:/Users/Gael/Desktop/CODE/RAW FILES/test.xlsx', sheet_names='test1')
 tags= df.columns.values
 mytime = datetime.strftime(datetime.now(), '%Y%m%d_%H%M%S')
-file_path = "C:/Users/Gael/Desktop/CODE/RAW FILES/{0}".format('Converted_file_' + mytime +'.xml')
+file_path = f'C:/Users/Gael/Desktop/CODE/RAW FILES/Converted_file_{mytime}.xml'
 
 Root = etree.Element("Root")
 head = etree.SubElement(Root, 'Head')
