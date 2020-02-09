@@ -40,8 +40,7 @@ def find_sku(xml):
     sku_value_list = [sku.find("A0001").text for sku in list_find_all_sku]
     return(sku_value_list)
 
-for total in test_list:
-    value2.extend(sku_find(total))
+value2 = list(chain.from_iterable(find_sku(total) for total in test_list))
 print(len(value2))
 
 d = {'SKU':value}
