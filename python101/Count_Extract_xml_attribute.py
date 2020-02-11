@@ -30,7 +30,7 @@ try:
                 s_sku = nb.find("A0001").text
                 value.append(s_sku)
         count2 = count + count2
-        logging.info('%s Nb sku', count2)
+        logging.info('%s Nb item', count2)
     print(count2)
  #######SOLUTION 2###############
 test_list = [etree.parse(str(p)) for p in Path('C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY').glob('**/*.xml')

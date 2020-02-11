@@ -61,8 +61,8 @@ sql_query = '''SELECT *
 df = pd.read_sql(sql_query, cnxn, params=(*list))
 
 #SPLIT LARGE FILES
-for i, chunk in enumerate(pd.read_csv('Extract_vincent', chunksize=100000)):
-	chunk.to_csv('Extract_vincent{}.csv'.format(i), index='False')
+for i, chunk in enumerate(pd.read_csv('Extract', chunksize=100000)):
+	chunk.to_csv('Extract{}.csv'.format(i), index='False')
 size = 10000
 list_of_df = [df.iloc[i:i + size -1,:] for i in range(0,len(df),size)]
 

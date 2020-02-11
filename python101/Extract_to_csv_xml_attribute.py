@@ -12,7 +12,7 @@ from itertools import *
 start = time.time()
 datestring = datetime.strftime(datetime.now(), '%Y%m%d_%H%M%S')
 list_of_attribute_value = []
-Attribute_to_extract = ['A0001','A9109','A9441','A1358','A1359','A9479','A9480','A9481','A9965','A9369']
+Attribute_to_extract = ['first','second','third','last_tag']
 
 for path in Path('C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY').glob('**/*.xml'):
     tree = etree.iterparse(str(path))
