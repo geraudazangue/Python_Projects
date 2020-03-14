@@ -86,3 +86,12 @@ cursor.execute("""
      where last_logon < ?
        and bill_overdue = ?
 """, [datetime.date(2001, 1, 1), 'y'])
+
+####INSTALL MODULE#####
+import subprocess
+import sys
+
+try:
+    import xs
+except ImportError:
+    subprocess.call([sys.executable, "-m", "pip", "install", '-r', 'pydev_requirements.txt'])
