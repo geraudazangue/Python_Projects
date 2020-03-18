@@ -17,7 +17,7 @@ Attribute_to_extract = ['first','second','third','last_tag']
 for path in Path('C:/RTC/Scripts & Tools & Files/Python/COUNT SKU PY').glob('**/*.xml'):
     tree = etree.iterparse(str(path))
     for event, node in tree:
-            if node.tag == 'A0001':
+            if node.tag == 'first':
                 sku = node.text
                 t = 0
                 myocc = ''.join([sku,'-',str(t)])
